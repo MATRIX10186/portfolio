@@ -1,0 +1,43 @@
+Copyright (c) 2026 Sawat Wongsaroj. All rights reserved.
+
+This repository contains both source code and media assets. They are licensed
+under different terms, as set out below.
+
+──────────────────────────────────────────────────────────────────────────────
+1. SOURCE CODE
+──────────────────────────────────────────────────────────────────────────────
+
+The source code in this repository (including, without limitation, files under
+`src/`, configuration files such as `astro.config.mjs`, `package.json`,
+`tsconfig.json`, and similar project files) is provided for personal portfolio
+viewing and evaluation only.
+
+You may view and fork the repository for your own learning or private reference.
+You may not redistribute, sublicense, sell, or use the source code (in whole or
+in part) to create a public-facing site or commercial product without prior
+written permission from the copyright holder.
+
+──────────────────────────────────────────────────────────────────────────────
+2. MEDIA ASSETS — ALL RIGHTS RESERVED
+──────────────────────────────────────────────────────────────────────────────
+
+All media assets in this repository and on the deployed site are proprietary and
+are NOT licensed for reuse. This includes, without limitation:
+
+  - Images, screenshots, photographs, and logos under `public/media/`
+  - Video and audio files under `public/media/`
+  - Résumé / CV PDF files under `public/`
+  - Any other visual or document assets served by the site
+
+You may NOT copy, download for redistribution, modify, republish, embed on other
+sites, train models on, or otherwise use these media assets without prior written
+permission from the copyright holder.
+
+Unauthorized use may be subject to copyright enforcement, including DMCA
+takedown notices where applicable.
+
+──────────────────────────────────────────────────────────────────────────────
+3. CONTACT
+──────────────────────────────────────────────────────────────────────────────
+
+For licensing requests, contact: sawatw2000@gmail.com

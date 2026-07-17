@@ -44,6 +44,17 @@ public/
   favicon.svg
 ```
 
+## License & copyright
+
+**Code and media are under different terms.** See [`LICENSE`](./LICENSE) for the full text.
+
+- **Source code** (`src/`, config files): for portfolio viewing and private reference only — not for redistribution or commercial reuse without permission.
+- **Media** (`public/media/`, résumés, and other assets): **All Rights Reserved.** Not licensed for reuse, redistribution, embedding, or training. Unauthorized use may be subject to DMCA takedown.
+
+© 2026 Sawat Wongsaroj. For licensing requests: sawatw2000@gmail.com
+
 ## Media credits
-Photos and video processed from your originals (field monitoring cabinet, solar station,
-RWDI, BCI demo, rooftop). Originals were HEIC/MOV; converted to web JPG/WebP/MP4.
+
+Photos and video processed from project originals (field monitoring, solar station,
+RWDI / Smartadata, BCI demo, rooftop, The Lake House). Converted to web JPG/WebP/MP4
+for delivery. All media remains proprietary — see License above.
