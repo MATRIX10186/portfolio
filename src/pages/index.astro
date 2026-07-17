@@ -1,0 +1,449 @@
+---
+import Base from '../layouts/Base.astro';
+import {
+  site, nav, hero, stats, work, capabilities, availability, experience, contact,
+} from '../data/site';
+
+const arrow = '↗';
+---
+
+<Base>
+  <!-- ================= NAV ================= -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#top">
+        {site.name}<span class="nav__brand-role"> — {site.role}</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        {nav.map((n) => <a class="nav__link" href={n.href}>{n.label}</a>)}
+      </nav>
+      <a class="nav__cta" href={site.links.resume} target="_blank" rel="noopener">
+        Resume <span class="arrow">{arrow}</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__card surface-dark">
+          <div class="hero__media" aria-hidden="true">
+            <picture>
+              <source srcset={hero.bgImgWebp} type="image/webp" />
+              <img src={hero.bgImg} alt="" width="1600" height="900" />
+            </picture>
+          </div>
+          <div class="hero__center">
+            <div class="hero__avatar">
+              <picture>
+                <source srcset={hero.portrait.imgWebp} type="image/webp" />
+                <img src={hero.portrait.img} alt={hero.portrait.alt} width="160" height="160" />
+              </picture>
+            </div>
+            <h1 class="h-display hero__title">{hero.title}</h1>
+            <p class="hero__intro">{hero.intro}</p>
+            <div class="hero__ctas">
+              <a class="btn btn--light" href={hero.primaryCta.href}>
+                {hero.primaryCta.label} <span class="arrow">{arrow}</span>
+              </a>
+              <a class="btn btn--ghost-dark" href={hero.secondaryCta.href} target="_blank" rel="noopener">
+                {hero.secondaryCta.label} <span class="arrow">{arrow}</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero__foot">
+            <div>
+              <div class="hero__foot-title">{hero.mediaCaption}</div>
+              <div class="hero__foot-sub">{hero.caption}</div>
+            </div>
+            <div class="hero__socials">
+              <a class="iconbtn" href={site.links.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21H9z"/></svg>
+              </a>
+              <a class="iconbtn" href={site.links.email} aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+              </a>
+              <a class="iconbtn" href={site.links.github} target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.59.69.48A10 10 0 0 0 12 2Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROOF STRIP ================= -->
+    <section class="section stats">
+      <div class="container">
+        <div class="stats__label">A few numbers</div>
+        <div class="stats__row">
+          {stats.map((s) => (
+            <div>
+              <div class="stat__value">{s.value}</div>
+              <div class="stat__label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SELECTED WORK ================= -->
+    <section id="work" class="section">
+      <div class="container">
+        <div class="work__panel surface-panel">
+          <div class="work__head">
+            <span class="chip">Selected Work</span>
+            <h2 class="h-section">{work.heading}</h2>
+            <p>{work.blurb}</p>
+          </div>
+
+          <div class="work__grid">
+            {work.projects.map((p) => {
+              const Tag = p.href ? 'a' : 'article';
+              const linkProps = p.href
+                ? { href: p.href, target: '_blank', rel: 'noopener' }
+                : {};
+              return (
+                <Tag class={`pcard ${p.href ? '' : 'pcard--static'}`.trim()} {...linkProps}>
+                  <div class="pcard__media">
+                    <picture>
+                      <source srcset={p.imgWebp} type="image/webp" />
+                      <img
+                        src={p.img}
+                        alt={p.alt}
+                        loading="lazy"
+                        width="700"
+                        height="438"
+                        style={p.objectPosition ? `object-position: ${p.objectPosition}` : undefined}
+                      />
+                    </picture>
+                    {p.logo && (
+                      <div class={`pcard__logo ${p.logo.plate ? 'pcard__logo--plate' : ''}`.trim()}>
+                        <picture>
+                          <source srcset={p.logo.imgWebp} type="image/webp" />
+                          <img src={p.logo.img} alt={p.logo.alt} width="80" height="80" loading="lazy" />
+                        </picture>
+                      </div>
+                    )}
+                  </div>
+                  <div class="pcard__body">
+                    <span class="chip chip--ghost">{p.tag}</span>
+                    <h3 class="pcard__title">{p.title}</h3>
+                    <p class="pcard__desc">{p.description}</p>
+                    <div class="pcard__foot">
+                      <span class={`pcard__link ${p.href ? '' : 'pcard__link--muted'}`.trim()}>
+                        {p.hrefLabel}{p.href && <span class="arrow"> {arrow}</span>}
+                      </span>
+                      {p.href && (
+                        <span class="pcard__go" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </Tag>
+              );
+            })}
+          </div>
+
+          <div class="work__extra">
+            <h3 class="work__extra-title">{work.additional.heading}</h3>
+            <div class="work__extra-grid">
+              {work.additional.items.map((item) => (
+                <article class="xcard">
+                  <div class="xcard__title">{item.title}</div>
+                  <p class="xcard__body">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAPABILITIES ================= -->
+    <section id="capabilities" class="section">
+      <div class="container">
+        <div class="caps__head">
+          <span class="chip">Skills</span>
+          <h2 class="h-section">{capabilities.heading}</h2>
+          <p>{capabilities.blurb}</p>
+        </div>
+        <div class="caps__grid">
+          {capabilities.groups.map((g) => (
+            <article class="caps__card">
+              <h3 class="caps__title">{g.title}</h3>
+              <ul class="caps__list">
+                {g.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="exp__head">
+          <span class="chip">Experience</span>
+          <h2 class="h-section">{experience.heading}</h2>
+        </div>
+
+        <div class="exp__list" data-exp-accordion>
+          {experience.roles.map((r) => (
+            <details class={`xrow ${r.featured ? 'xrow--dark' : 'xrow--light'}`} open={r.open || undefined}>
+              <summary class="xrow__summary">
+                <div class="xrow__meta">
+                  <div class="xrow__meta-top">
+                    {r.logo && (
+                      <div class={`xrow__logo ${r.logo.plate ? 'xrow__logo--plate' : ''}`.trim()}>
+                        <picture>
+                          <source srcset={r.logo.imgWebp} type="image/webp" />
+                          <img src={r.logo.img} alt={r.logo.alt} width="80" height="80" loading="lazy" />
+                        </picture>
+                      </div>
+                    )}
+                    <span class="datechip">{r.dates}</span>
+                  </div>
+                  <div class="xrow__title">{r.title}</div>
+                  <div class="xrow__org">{r.org}</div>
+                </div>
+                <ul class="xrow__points">
+                  {r.highlights.map((pt) => <li>{pt}</li>)}
+                </ul>
+                <span class="xrow__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </summary>
+              <div class={`xrow__expand ${r.media?.length ? '' : 'xrow__expand--text'}`.trim()}>
+                <div class="xrow__copy">
+                  <ul class="xrow__details">
+                    {r.details.map((pt) => <li>{pt}</li>)}
+                  </ul>
+                  {r.stack && <p class="xrow__stack"><span>Stack</span> {r.stack}</p>}
+                </div>
+                {r.media?.length ? (
+                  r.mediaCarousel ? (
+                    <div class="xrow__carousel" data-carousel>
+                      <div class="xrow__carousel-viewport">
+                        {r.media.map((m, i) => (
+                          <figure class={`xrow__media xrow__slide ${i === 0 ? 'is-active' : ''}`.trim()} data-slide={i}>
+                            {m.type === 'video' ? (
+                              <video
+                                src={m.src}
+                                poster={m.poster}
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                preload="metadata"
+                              ></video>
+                            ) : (
+                              <picture>
+                                <source srcset={m.imgWebp} type="image/webp" />
+                                <img src={m.img} alt={m.alt} loading={i === 0 ? 'eager' : 'lazy'} width="640" height="400" />
+                              </picture>
+                            )}
+                            {m.caption && <figcaption>{m.caption}</figcaption>}
+                          </figure>
+                        ))}
+                      </div>
+                      <button type="button" class="xrow__carousel-btn xrow__carousel-btn--prev" data-carousel-prev aria-label="Previous image">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                      </button>
+                      <button type="button" class="xrow__carousel-btn xrow__carousel-btn--next" data-carousel-next aria-label="Next image">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                      </button>
+                      <div class="xrow__carousel-dots" role="tablist" aria-label="Carousel slides">
+                        {r.media.map((_, i) => (
+                          <button
+                            type="button"
+                            class={`xrow__carousel-dot ${i === 0 ? 'is-active' : ''}`.trim()}
+                            data-carousel-dot={i}
+                            aria-label={`Show image ${i + 1}`}
+                          ></button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div class={`xrow__gallery ${r.media.length > 1 ? 'xrow__gallery--pair' : ''}`.trim()}>
+                      {r.media.map((m) => (
+                        <figure class="xrow__media">
+                          {m.type === 'video' ? (
+                            <video
+                              src={m.src}
+                              poster={m.poster}
+                              autoplay
+                              muted
+                              loop
+                              playsinline
+                              preload="metadata"
+                            ></video>
+                          ) : (
+                            <picture>
+                              <source srcset={m.imgWebp} type="image/webp" />
+                              <img src={m.img} alt={m.alt} loading="lazy" width="640" height="400" />
+                            </picture>
+                          )}
+                          {m.caption && <figcaption>{m.caption}</figcaption>}
+                        </figure>
+                      ))}
+                    </div>
+                  )
+                ) : null}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <script>
+          const root = document.querySelector('[data-exp-accordion]');
+          if (root) {
+            root.querySelectorAll('details').forEach((el) => {
+              el.addEventListener('toggle', () => {
+                if (!el.open) return;
+                root.querySelectorAll('details').forEach((other) => {
+                  if (other !== el) other.open = false;
+                });
+              });
+            });
+
+            root.querySelectorAll('[data-carousel]').forEach((carousel) => {
+              const slides = [...carousel.querySelectorAll('[data-slide]')];
+              const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
+              let index = 0;
+
+              const show = (next) => {
+                index = (next + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+                dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+              };
+
+              carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                show(index - 1);
+              });
+              carousel.querySelector('[data-carousel-next]')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                show(index + 1);
+              });
+              dots.forEach((dot) => {
+                dot.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  show(Number(dot.getAttribute('data-carousel-dot')));
+                });
+              });
+            });
+          }
+        </script>
+
+        <div class="edu__grid">
+          {experience.education.map((e) => (
+            <article class="edu">
+              <div class="edu__top">
+                {e.logo && (
+                  <div class={`edu__logo ${e.logo.plate ? 'edu__logo--plate' : ''}`.trim()}>
+                    <picture>
+                      <source srcset={e.logo.imgWebp} type="image/webp" />
+                      <img src={e.logo.img} alt={e.logo.alt} width="80" height="80" loading="lazy" />
+                    </picture>
+                  </div>
+                )}
+                <span class="datechip">{e.dates}</span>
+              </div>
+              <div class="edu__title">{e.title}</div>
+              <div class="edu__sub">{e.sub}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AVAILABILITY ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="avail__grid">
+          <div class="avail__card">
+            <span class="chip chip--blue">{availability.card.tag}</span>
+            <h2 class="h-section">{availability.card.title}</h2>
+            <ul class="avail__checks">
+              {availability.card.checks.map((c) => (
+                <li>
+                  <span class="avail__tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+            <div class="avail__btns">
+              <a class="btn btn--light" href={site.links.email}>Email me <span class="arrow">{arrow}</span></a>
+              <a class="btn btn--ghost-dark" href={site.links.linkedin} target="_blank" rel="noopener">LinkedIn <span class="arrow">{arrow}</span></a>
+            </div>
+          </div>
+          <div class="avail__side">
+            <span class="chip">{availability.side.tag}</span>
+            <h2 class="h-section">{availability.side.title}</h2>
+            <p>{availability.side.body}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact__card surface-dark">
+          <div class="contact__media" aria-hidden="true">
+            <video
+              data-contact-video
+              src={contact.media.src}
+              poster={contact.media.poster}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
+          <span class="chip chip--blue">{contact.tag}</span>
+          <h2 class="h-display" style="font-size:clamp(1.8rem,3.6vw,2.6rem)">{contact.title}</h2>
+          <p>{contact.body}</p>
+          <div class="contact__btns">
+            <a class="btn btn--blue" href={site.links.email}>Email <span class="arrow">{arrow}</span></a>
+            <a class="btn btn--light" href={site.links.linkedin} target="_blank" rel="noopener">LinkedIn <span class="arrow">{arrow}</span></a>
+            <a class="btn btn--ghost-dark" href={site.links.github} target="_blank" rel="noopener">GitHub <span class="arrow">{arrow}</span></a>
+          </div>
+          <div class="contact__line">
+            {contact.line}
+            <span class="contact__sep">·</span>
+            <a href={site.phones.au.href}>{site.phones.au.label}</a>
+            <span class="contact__sep">·</span>
+            <a href={site.phones.th.href}>{site.phones.th.label}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const contactVideo = document.querySelector('[data-contact-video]');
+      if (contactVideo instanceof HTMLVideoElement) {
+        const setRate = () => { contactVideo.playbackRate = 0.75; };
+        setRate();
+        contactVideo.addEventListener('loadedmetadata', setRate);
+        contactVideo.addEventListener('play', setRate);
+      }
+    </script>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="container foot">
+        <span>© {new Date().getFullYear()} {site.name}</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+</Base>
