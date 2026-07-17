@@ -17,9 +17,15 @@ const arrow = '↗';
       <nav class="nav__links" aria-label="Primary">
         {nav.map((n) => <a class="nav__link" href={n.href}>{n.label}</a>)}
       </nav>
-      <a class="nav__cta" href={site.links.resume} target="_blank" rel="noopener">
-        Resume <span class="arrow">{arrow}</span>
-      </a>
+      <div class="nav__resume" data-resume>
+        <button class="nav__cta" type="button" aria-haspopup="true" aria-expanded="false" data-resume-toggle>
+          Resume <span class="arrow">{arrow}</span>
+        </button>
+        <div class="nav__resume-menu" data-resume-menu>
+          <a href={site.links.resume.sydney} target="_blank" rel="noopener">Sydney</a>
+          <a href={site.links.resume.bangkok} target="_blank" rel="noopener">Bangkok</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -47,9 +53,15 @@ const arrow = '↗';
               <a class="btn btn--light" href={hero.primaryCta.href}>
                 {hero.primaryCta.label} <span class="arrow">{arrow}</span>
               </a>
-              <a class="btn btn--ghost-dark" href={hero.secondaryCta.href} target="_blank" rel="noopener">
-                {hero.secondaryCta.label} <span class="arrow">{arrow}</span>
-              </a>
+              <div class="hero__resume" data-resume>
+                <button class="btn btn--ghost-dark" type="button" aria-haspopup="true" aria-expanded="false" data-resume-toggle>
+                  Résumé <span class="arrow">{arrow}</span>
+                </button>
+                <div class="hero__resume-menu" data-resume-menu>
+                  <a href={site.links.resume.sydney} target="_blank" rel="noopener">Sydney</a>
+                  <a href={site.links.resume.bangkok} target="_blank" rel="noopener">Bangkok</a>
+                </div>
+              </div>
             </div>
           </div>
           <div class="hero__foot">
@@ -417,16 +429,51 @@ const arrow = '↗';
             <a class="btn btn--light" href={site.links.linkedin} target="_blank" rel="noopener">LinkedIn <span class="arrow">{arrow}</span></a>
             <a class="btn btn--ghost-dark" href={site.links.github} target="_blank" rel="noopener">GitHub <span class="arrow">{arrow}</span></a>
           </div>
-          <div class="contact__line">
-            {contact.line}
-            <span class="contact__sep">·</span>
-            <a href={site.phones.au.href}>{site.phones.au.label}</a>
-            <span class="contact__sep">·</span>
-            <a href={site.phones.th.href}>{site.phones.th.label}</a>
+          <div class="contact__locations">
+            <div class="contact__line">
+              {contact.locations[0].place}
+              <span class="contact__sep">·</span>
+              <a href={site.phones.au.href}>{site.phones.au.label}</a>
+              <span class="contact__sep">·</span>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </div>
+            <div class="contact__line">
+              {contact.locations[1].place}
+              <span class="contact__sep">·</span>
+              <a href={site.phones.th.href}>{site.phones.th.label}</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      const resumeWraps = [...document.querySelectorAll('[data-resume]')];
+      const closeAll = () => {
+        resumeWraps.forEach((wrap) => {
+          wrap.removeAttribute('data-open');
+          wrap.querySelector('[data-resume-toggle]')?.setAttribute('aria-expanded', 'false');
+        });
+      };
+      resumeWraps.forEach((wrap) => {
+        const toggle = wrap.querySelector('[data-resume-toggle]');
+        toggle?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = wrap.hasAttribute('data-open');
+          closeAll();
+          if (!isOpen) {
+            wrap.setAttribute('data-open', '');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+      document.addEventListener('click', (e) => {
+        if (!resumeWraps.some((wrap) => wrap.contains(e.target as Node))) closeAll();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    </script>
 
     <script>
       const contactVideo = document.querySelector('[data-contact-video]');

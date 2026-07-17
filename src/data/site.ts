@@ -19,7 +19,10 @@ export const site = {
     email: 'mailto:sawatw2000@gmail.com',
     linkedin: 'https://www.linkedin.com/in/sawat-wongsaroj', // TODO: real URL
     github: 'https://github.com/MATRIX10186',
-    resume: '/Sawat_Wongsaroj_Resume.pdf',
+    resume: {
+      sydney: '/Sawat_Wongsaroj_Resume.pdf',
+      bangkok: '/Sawat_Wongsaroj_Resume_BKK.pdf',
+    },
   },
 } as const;
 
@@ -35,7 +38,6 @@ export const hero = {
   intro:
     'Full-stack engineer working across field systems, React and TypeScript interfaces, Node.js APIs, data pipelines and cloud deployment.',
   primaryCta: { label: 'View selected work', href: '#work' },
-  secondaryCta: { label: 'Download résumé', href: site.links.resume },
   caption:
     'Based in Sydney. Open to full-stack, software engineering and product-focused development roles.',
   bgImg: '/media/solar-station.jpg',
@@ -366,7 +368,11 @@ export const contact = {
   title: "Let's build solutions businesses can rely on.",
   body:
     'Email is quickest — I reply within a day. Happy to walk through any of these builds in detail.',
-  line: 'Parramatta, Sydney · sawatw2000@gmail.com',
+  email: 'sawatw2000@gmail.com',
+  locations: [
+    { place: 'Parramatta, Sydney', phone: 'au' },
+    { place: 'Bangkok, Thailand', phone: 'th' },
+  ],
   media: {
     src: '/media/rooftop.mp4',
     poster: '/media/rooftop-poster.jpg',
