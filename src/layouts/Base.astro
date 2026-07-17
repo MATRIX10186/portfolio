@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -35,5 +36,6 @@ const { title = `${site.name} — ${site.role}`, description = site.description 
   </head>
   <body>
     <slot />
+    <SpeedInsights />
   </body>
 </html>
