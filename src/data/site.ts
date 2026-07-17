@@ -18,7 +18,7 @@ export const site = {
   links: {
     email: 'mailto:sawatw2000@gmail.com',
     linkedin: 'https://www.linkedin.com/in/sawat-wongsaroj', // TODO: real URL
-    github: 'https://github.com/sawatw', // TODO: real URL
+    github: 'https://github.com/MATRIX10186',
     resume: '/Sawat_Wongsaroj_Resume.pdf',
   },
 } as const;
