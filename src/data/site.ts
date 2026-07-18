@@ -91,7 +91,7 @@ export const work = {
     },
     {
       tag: 'UNSW Thesis',
-      title: 'Brain Computer Interface Game',
+      title: 'Brain Computer Interface (BCI) Thesis Project',
       description:
         'Designed and built a real-time BCI game controlled by EEG signals — signal processing pipeline, game loop and user interface. Distinction-graded engineering thesis (80/100).',
       href: 'https://www.taylorfrancis.com/chapters/edit/10.1201/9781003557555-12/leveraging-brain%E2%80%93computer-interfaces-advance-interaction-within-digital-landscape-ali-darejeh-colby-rehn-dylan-ngo-dyllanson-sawat-wongsaroj-samad-sepasgozar',
