@@ -9,20 +9,13 @@ export const site = {
   role: 'Software Engineer',
   location: 'Parramatta, Sydney',
   email: 'sawatw2000@gmail.com',
-  phones: {
-    au: { label: '+61 479 079 309', href: 'tel:+61479079309' },
-    th: { label: '+66 83 592 0042', href: 'tel:+66835920042' },
-  },
   description:
     'Sawat Wongsaroj — a software engineer in Sydney. React, TypeScript and Node up front; SQL, Azure and IoT hardware underneath.',
   links: {
     email: 'mailto:sawatw2000@gmail.com',
     linkedin: 'https://www.linkedin.com/in/sawat-wongsaroj', // TODO: real URL
     github: 'https://github.com/MATRIX10186',
-    resume: {
-      sydney: '/Sawat_Wongsaroj_Resume.pdf',
-      bangkok: '/Sawat_Wongsaroj_Resume_BKK.pdf',
-    },
+    resume: '/Sawat_Resume_2026_public.pdf',
   },
 } as const;
 
@@ -369,10 +362,7 @@ export const contact = {
   body:
     'Email is quickest — I reply within a day. Happy to walk through any of these builds in detail.',
   email: 'sawatw2000@gmail.com',
-  locations: [
-    { place: 'Parramatta, Sydney', phone: 'au' },
-    { place: 'Bangkok, Thailand', phone: 'th' },
-  ],
+  locations: ['Parramatta, Sydney', 'Bangkok, Thailand'],
   media: {
     src: '/media/rooftop.mp4',
     poster: '/media/rooftop-poster.jpg',

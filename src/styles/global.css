@@ -131,22 +131,8 @@ button { font-family: inherit; cursor: pointer; }
 .nav__link[aria-current] { color: var(--ink); background: var(--panel); }
 .nav__cta { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 500;
   background: var(--ink); color: #fff; padding: 9px 15px; border-radius: var(--radius-pill);
-  border: none; cursor: pointer; font-family: inherit; }
+  border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
 .nav__cta:hover { transform: translateY(-1px); }
-.nav__resume { position: relative; }
-.nav__resume-menu {
-  position: absolute; top: calc(100% + 8px); right: 0; z-index: 30;
-  display: none; flex-direction: column; min-width: 148px;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--radius-md); padding: 6px;
-  box-shadow: 0 18px 40px -20px rgba(12,13,16,0.4);
-}
-.nav__resume[data-open] .nav__resume-menu { display: flex; }
-.nav__resume-menu a {
-  font-size: 14px; color: var(--ink); padding: 8px 12px;
-  border-radius: 10px; transition: background .15s ease;
-}
-.nav__resume-menu a:hover { background: var(--panel); }
 .nav__menu-toggle { display: none; }
 
 /* =========================================================================
@@ -191,20 +177,6 @@ button { font-family: inherit; cursor: pointer; }
 .hero__ctas {
   margin-top: 26px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
 }
-.hero__resume { position: relative; }
-.hero__resume-menu {
-  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
-  z-index: 30; display: none; flex-direction: column;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--radius-md); padding: 6px;
-  box-shadow: 0 18px 40px -20px rgba(0,0,0,0.55);
-}
-.hero__resume[data-open] .hero__resume-menu { display: flex; }
-.hero__resume-menu a {
-  font-size: 14px; color: var(--ink); padding: 9px 14px; text-align: left;
-  border-radius: 10px; transition: background .15s ease, color .15s ease;
-}
-.hero__resume-menu a:hover { background: var(--panel); color: var(--ink); }
 .hero__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin-top: auto; }
 .hero__foot-title { color: #fff; font-weight: 600; font-size: 13.5px; }
 .hero__foot-sub { color: var(--on-dark-muted); font-size: 13px; margin-top: 3px; max-width: 420px; }
