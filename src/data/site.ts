@@ -362,7 +362,7 @@ export const contact = {
   body:
     'Email is quickest — I reply within a day. Happy to walk through any of these builds in detail.',
   email: 'sawatw2000@gmail.com',
-  locations: ['Parramatta, Sydney', 'Bangkok, Thailand'],
+  locations: ['Sydney, Australia', 'Bangkok, Thailand'],
   media: {
     src: '/media/rooftop.mp4',
     poster: '/media/rooftop-poster.jpg',
