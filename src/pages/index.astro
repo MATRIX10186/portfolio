@@ -88,101 +88,6 @@ const arrow = '↗';
       </div>
     </section>
 
-    <!-- ================= SELECTED WORK ================= -->
-    <section id="work" class="section">
-      <div class="container">
-        <div class="work__panel surface-panel">
-          <div class="work__head">
-            <span class="chip">Selected Work</span>
-            <h2 class="h-section">{work.heading}</h2>
-            <p>{work.blurb}</p>
-          </div>
-
-          <div class="work__grid">
-            {work.projects.map((p) => {
-              const Tag = p.href ? 'a' : 'article';
-              const linkProps = p.href
-                ? { href: p.href, target: '_blank', rel: 'noopener' }
-                : {};
-              return (
-                <Tag class={`pcard ${p.href ? '' : 'pcard--static'}`.trim()} {...linkProps}>
-                  <div class="pcard__media">
-                    <picture>
-                      <source srcset={p.imgWebp} type="image/webp" />
-                      <img
-                        src={p.img}
-                        alt={p.alt}
-                        loading="lazy"
-                        width="700"
-                        height="438"
-                        style={p.objectPosition ? `object-position: ${p.objectPosition}` : undefined}
-                      />
-                    </picture>
-                    {p.logo && (
-                      <div class={`pcard__logo ${p.logo.plate ? 'pcard__logo--plate' : ''}`.trim()}>
-                        <picture>
-                          <source srcset={p.logo.imgWebp} type="image/webp" />
-                          <img src={p.logo.img} alt={p.logo.alt} width="80" height="80" loading="lazy" />
-                        </picture>
-                      </div>
-                    )}
-                  </div>
-                  <div class="pcard__body">
-                    <span class="chip chip--ghost">{p.tag}</span>
-                    <h3 class="pcard__title">{p.title}</h3>
-                    <p class="pcard__desc">{p.description}</p>
-                    <div class="pcard__foot">
-                      <span class={`pcard__link ${p.href ? '' : 'pcard__link--muted'}`.trim()}>
-                        {p.hrefLabel}{p.href && <span class="arrow"> {arrow}</span>}
-                      </span>
-                      {p.href && (
-                        <span class="pcard__go" aria-hidden="true">
-                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Tag>
-              );
-            })}
-          </div>
-
-          <div class="work__extra">
-            <h3 class="work__extra-title">{work.additional.heading}</h3>
-            <div class="work__extra-grid">
-              {work.additional.items.map((item) => (
-                <article class="xcard">
-                  <div class="xcard__title">{item.title}</div>
-                  <p class="xcard__body">{item.body}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CAPABILITIES ================= -->
-    <section id="capabilities" class="section">
-      <div class="container">
-        <div class="caps__head">
-          <span class="chip">Skills</span>
-          <h2 class="h-section">{capabilities.heading}</h2>
-          <p>{capabilities.blurb}</p>
-        </div>
-        <div class="caps__grid">
-          {capabilities.groups.map((g) => (
-            <article class="caps__card">
-              <h3 class="caps__title">{g.title}</h3>
-              <ul class="caps__list">
-                {g.items.map((item) => <li>{item}</li>)}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <!-- ================= EXPERIENCE ================= -->
     <section id="experience" class="section">
       <div class="container">
@@ -360,6 +265,103 @@ const arrow = '↗';
               <div class="edu__sub">{e.sub}</div>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAPABILITIES ================= -->
+    <section id="capabilities" class="section">
+      <div class="container">
+        <div class="caps__head">
+          <span class="chip">Skills</span>
+          <h2 class="h-section">{capabilities.heading}</h2>
+          <p>{capabilities.blurb}</p>
+        </div>
+        <div class="caps__grid">
+          {capabilities.groups.map((g) => (
+            <article class="caps__card">
+              <h3 class="caps__title">{g.title}</h3>
+              <ul class="caps__list">
+                {g.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ================= SELECTED WORK ================= -->
+    <section id="work" class="section">
+      <div class="container">
+        <div class="work__panel surface-panel">
+          <div class="work__head">
+            <span class="chip">Selected Work</span>
+            <h2 class="h-section">{work.heading}</h2>
+            <p>{work.blurb}</p>
+          </div>
+
+          <div class="work__grid">
+            {work.projects.map((p) => {
+              const Tag = p.href ? 'a' : 'article';
+              const linkProps = p.href
+                ? { href: p.href, target: '_blank', rel: 'noopener' }
+                : {};
+              return (
+                <Tag class={`pcard ${p.href ? '' : 'pcard--static'}`.trim()} {...linkProps}>
+                  <div class="pcard__media">
+                    <picture>
+                      <source srcset={p.imgWebp} type="image/webp" />
+                      <img
+                        src={p.img}
+                        alt={p.alt}
+                        loading="lazy"
+                        width="700"
+                        height="438"
+                        style={p.objectPosition ? `object-position: ${p.objectPosition}` : undefined}
+                      />
+                    </picture>
+                    {p.logo && (
+                      <div class={`pcard__logo ${p.logo.plate ? 'pcard__logo--plate' : ''}`.trim()}>
+                        <picture>
+                          <source srcset={p.logo.imgWebp} type="image/webp" />
+                          <img src={p.logo.img} alt={p.logo.alt} width="80" height="80" loading="lazy" />
+                        </picture>
+                      </div>
+                    )}
+                  </div>
+                  <div class="pcard__body">
+                    <span class="chip chip--ghost">{p.tag}</span>
+                    <h3 class="pcard__title">{p.title}</h3>
+                    <p class="pcard__desc">{p.description}</p>
+                    <div class="pcard__foot">
+                      <span class={`pcard__link ${p.href ? '' : 'pcard__link--muted'}`.trim()}>
+                        {p.hrefLabel}{p.href && <span class="arrow"> {arrow}</span>}
+                      </span>
+                      {p.href && (
+                        <span class="pcard__go" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </Tag>
+              );
+            })}
+          </div>
+
+          <div class="work__extra">
+            <h3 class="work__extra-title">{work.additional.heading}</h3>
+            <div class="work__extra-grid">
+              {work.additional.items.map((item) => (
+                <article class="xcard">
+                  <div class="xcard__title">{item.title}</div>
+                  <p class="xcard__body">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
